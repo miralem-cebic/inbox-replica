@@ -18,3 +18,6 @@ When scrolling downward brings in the navigation bar from the first screen. The 
 
 # Game Plan
 We'll configure a UITableViewController to display rows of items. Next we'll create a modal transition that performs the expanding effect. Finally we'll have the detail view controller support some of the transition details when scrolling.
+
+
+inspired by [matthewcheoks' blog entry](http://blog.matthewcheok.com/design-teardown-preview-expanding-cells/)
