@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		E757C6CB1D16C0950091DC85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E757C6CA1D16C0950091DC85 /* AppDelegate.swift */; };
-		E757C6CD1D16C0950091DC85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E757C6CC1D16C0950091DC85 /* ViewController.swift */; };
 		E757C6D01D16C0950091DC85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E757C6CE1D16C0950091DC85 /* Main.storyboard */; };
 		E757C6D21D16C0950091DC85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E757C6D11D16C0950091DC85 /* Assets.xcassets */; };
 		E757C6D51D16C0950091DC85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E757C6D31D16C0950091DC85 /* LaunchScreen.storyboard */; };
+		E757C6DD1D16CAC40091DC85 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E757C6DC1D16CAC40091DC85 /* MainTableViewController.swift */; };
+		E757C6DF1D16CD850091DC85 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E757C6DE1D16CD850091DC85 /* DetailViewController.swift */; };
+		E757C6E11D16CF980091DC85 /* ExpandingCellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E757C6E01D16CF980091DC85 /* ExpandingCellTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E757C6C71D16C0950091DC85 /* Inbox-Fake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Inbox-Fake.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E757C6CA1D16C0950091DC85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E757C6CC1D16C0950091DC85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E757C6CF1D16C0950091DC85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E757C6D11D16C0950091DC85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E757C6D41D16C0950091DC85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E757C6D61D16C0950091DC85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E757C6DC1D16CAC40091DC85 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		E757C6DE1D16CD850091DC85 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E757C6E01D16CF980091DC85 /* ExpandingCellTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandingCellTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +59,10 @@
 			isa = PBXGroup;
 			children = (
 				E757C6CA1D16C0950091DC85 /* AppDelegate.swift */,
-				E757C6CC1D16C0950091DC85 /* ViewController.swift */,
 				E757C6CE1D16C0950091DC85 /* Main.storyboard */,
+				E757C6DC1D16CAC40091DC85 /* MainTableViewController.swift */,
+				E757C6DE1D16CD850091DC85 /* DetailViewController.swift */,
+				E757C6E01D16CF980091DC85 /* ExpandingCellTransition.swift */,
 				E757C6D11D16C0950091DC85 /* Assets.xcassets */,
 				E757C6D31D16C0950091DC85 /* LaunchScreen.storyboard */,
 				E757C6D61D16C0950091DC85 /* Info.plist */,
@@ -135,7 +141,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E757C6CD1D16C0950091DC85 /* ViewController.swift in Sources */,
+				E757C6DF1D16CD850091DC85 /* DetailViewController.swift in Sources */,
+				E757C6E11D16CF980091DC85 /* ExpandingCellTransition.swift in Sources */,
+				E757C6DD1D16CAC40091DC85 /* MainTableViewController.swift in Sources */,
 				E757C6CB1D16C0950091DC85 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
