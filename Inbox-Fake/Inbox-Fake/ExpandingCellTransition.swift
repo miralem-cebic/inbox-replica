@@ -72,6 +72,9 @@ class ExpandingCellTransition: NSObject,
         let targetFrame = backgroundViewController.view.convertRect(targetView.frame, fromView: targetView.superview)
         if type == .Presenting {
             sliceSnapshotsInBackgroundViewController(backgroundViewController, targetFrame: targetFrame, targetView: targetView)
+            (foregroundViewController as? ExpandingTransitionPresentedViewController)?.expandingTransition(self, navigationBarSnapshot: navigationBarSnapshot)
+        } else {
+            navigationBarSnapshot.frame = containerView!.convertRect(navigationBarSnapshot.frame, fromView: navigationBarSnapshot.superview)
         }
 
         targetContainer.addSubview(foregroundViewController.view)

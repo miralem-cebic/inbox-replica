@@ -10,11 +10,33 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView : UIView!
+    
     let transition = ExpandingCellTransition()
+
+    var navigationBarSnapshot: UIView!
+    var navigationBarHeight: CGFloat = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, scrollView.frame.size.height*2);
         self.transitioningDelegate = transition
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if navigationBarSnapshot != nil {
+            navigationBarSnapshot.frame.origin.y = -navigationBarHeight
+            scrollView.addSubview(navigationBarSnapshot)
+        }
+    }
+
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        if scrollView.contentOffset.y < -navigationBarHeight/2 {
+            return .LightContent
+        }
+        return .Default
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,14 +48,35 @@ class DetailViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension DetailViewController: ExpandingTransitionPresentedViewController {
+    // MARK: ExpandingTransitionPresentedViewController
+
+    func expandingTransition(transition: ExpandingCellTransition, navigationBarSnapshot: UIView) {
+        self.navigationBarSnapshot = navigationBarSnapshot
+        self.navigationBarHeight = navigationBarSnapshot.frame.height
+
     }
-    */
+}
 
+// MARK: UIScrollViewDelegate
+extension DetailViewController: UIScrollViewDelegate
+{
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if !isBeingDismissed() {
+            navigationBarSnapshot.frame = CGRect(x: 0, y: scrollView.contentOffset.y, width: view.bounds.width, height: -scrollView.contentOffset.y)
+        }
+
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            [self]
+            self.setNeedsStatusBarAppearanceUpdate()
+        })
+    }
+
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y < -navigationBarHeight/2 {
+            dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
 }
