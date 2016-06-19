@@ -50,13 +50,12 @@ class DetailViewController: UIViewController {
 
 }
 
+// MARK: ExpandingTransitionPresentedViewController
 extension DetailViewController: ExpandingTransitionPresentedViewController {
-    // MARK: ExpandingTransitionPresentedViewController
 
     func expandingTransition(transition: ExpandingCellTransition, navigationBarSnapshot: UIView) {
         self.navigationBarSnapshot = navigationBarSnapshot
         self.navigationBarHeight = navigationBarSnapshot.frame.height
-
     }
 }
 

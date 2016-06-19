@@ -113,8 +113,6 @@ extension MainTableViewController
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
         presentViewController(controller, animated: true, completion: nil)
     }
-
-
 }
 
 // MARK: ExpandingTransitionPresentingViewController
