@@ -8,7 +8,9 @@
 
 import UIKit
 
-class MainTableViewController: UITableViewController {
+class MainTableViewController: UITableViewController, ExpandingTransitionPresentingViewController {
+
+    var selectedIndexPath: NSIndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,10 +97,9 @@ class MainTableViewController: UITableViewController {
 
 }
 
+// MARK: UITableViewDelegate
 extension MainTableViewController
 {
-    // MARK: UITableViewDelegate
-
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
 
         cell.separatorInset = UIEdgeInsetsZero
@@ -106,10 +107,24 @@ extension MainTableViewController
         cell.preservesSuperviewLayoutMargins = false
     }
 
-    // MARK: UITableViewDelegate
-
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedIndexPath = indexPath
+
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
         presentViewController(controller, animated: true, completion: nil)
+    }
+
+
+}
+
+// MARK: ExpandingTransitionPresentingViewController
+extension MainTableViewController
+{
+    func expandingTransitionTargetViewForTransition(transition: ExpandingCellTransition) -> UIView! {
+        if let indexPath = selectedIndexPath {
+            return tableView.cellForRowAtIndexPath(indexPath)
+        } else {
+            return nil
+        }
     }
 }
