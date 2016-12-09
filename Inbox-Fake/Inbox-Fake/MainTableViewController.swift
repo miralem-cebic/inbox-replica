@@ -10,7 +10,7 @@ import UIKit
 
 class MainTableViewController: UITableViewController {
 
-    var selectedIndexPath: NSIndexPath?
+    var selectedIndexPath: IndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,27 +24,27 @@ class MainTableViewController: UITableViewController {
 // MARK: UITableViewDelegate
 extension MainTableViewController
 {
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
-        cell.separatorInset = UIEdgeInsetsZero
-        cell.layoutMargins = UIEdgeInsetsZero
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
         cell.preservesSuperviewLayoutMargins = false
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
 
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-        presentViewController(controller, animated: true, completion: nil)
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        present(controller, animated: true, completion: nil)
     }
 }
 
 // MARK: ExpandingTransitionPresentingViewController
 extension MainTableViewController: ExpandingTransitionPresentingViewController
 {
-    func expandingTransitionTargetViewForTransition(transition: ExpandingCellTransition) -> UIView! {
+    func expandingTransitionTargetViewForTransition(_ transition: ExpandingCellTransition) -> UIView! {
         if let indexPath = selectedIndexPath {
-            return tableView.cellForRowAtIndexPath(indexPath)
+            return tableView.cellForRow(at: indexPath)
         } else {
             return nil
         }
