@@ -1,24 +1,8 @@
-//
-//  MainTableViewController.swift
-//  Inbox-Fake
-//
-//  Created by Miralem Cebic on 19/06/16.
-//  Copyright © 2016 Miralem Cebic. All rights reserved.
-//
-
 import UIKit
 
 class MainTableViewController: UITableViewController {
 
     var selectedIndexPath: IndexPath?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 }
 
 // MARK: UITableViewDelegate
@@ -34,7 +18,8 @@ extension MainTableViewController
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
 
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: DetailViewController.identifier) as! DetailViewController
         present(controller, animated: true, completion: nil)
     }
 }

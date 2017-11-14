@@ -1,11 +1,3 @@
-//
-//  DetailViewController.swift
-//  Inbox-Fake
-//
-//  Created by Miralem Cebic on 19/06/16.
-//  Copyright © 2016 Miralem Cebic. All rights reserved.
-//
-
 import UIKit
 
 class DetailViewController: UIViewController {
@@ -38,10 +30,9 @@ class DetailViewController: UIViewController {
         }
         return .default
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    class var identifier: String {
+        return "DetailViewController"
     }
 
     @IBAction func handleCloseButton(_ sender: AnyObject) {
